@@ -124,6 +124,7 @@ public class ControlActivity extends Activity implements OnClickListener {
 		setController(new MultiPointController());
 		mDevice = DLNAContainer.getInstance().getSelectedDevice();
 		urls.add(getIntent().getStringExtra("url"));
+		LogUtil.v("yangzc", getIntent().getStringExtra("url"));
 //		urls.add("http://video19.ifeng.com/video07/2013/11/11/281708-102-007-1138.mp4");// 我们结婚吧
 //		urls.add("http://video19.ifeng.com/video06/2012/09/28/97b03b63-1133-43d0-a6ff-fb2bc6326ac7.mp4");// 伊能静
 //		urls.add("http://video19.ifeng.com/video06/2012/04/11/629da9ec-60d4-4814-a940-997e6487804a.mp4"); // 佟丽娅

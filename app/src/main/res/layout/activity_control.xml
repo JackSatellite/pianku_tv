@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:ignore="all" >
+    tools:ignore="all">
 
     <TextView
         android:id="@+id/tv_title"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/black" >
+        android:background="@android:color/black">
 
         <SeekBar
             android:id="@+id/sb_progress"
@@ -37,15 +37,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sb_progress"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:baselineAligned="false" >
+            android:layout_marginBottom="5dp"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp" >
+                android:layout_marginRight="10dp">
 
                 <TextView
                     android:id="@+id/tv_current"
@@ -73,13 +73,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1000" >
+                android:layout_weight="1000">
 
                 <FrameLayout
                     android:id="@+id/fl_play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" >
+                    android:layout_centerInParent="true">
 
                     <ImageView
                         android:id="@+id/iv_play"
@@ -139,7 +139,7 @@
             <RelativeLayout
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
+                android:layout_gravity="center_vertical">
 
                 <SeekBar
                     android:id="@+id/sb_voice"
@@ -158,7 +158,7 @@
                     android:layout_width="31dp"
                     android:layout_height="20.77dp"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@id/sb_voice" >
+                    android:layout_toLeftOf="@id/sb_voice">
 
                     <ImageView
                         android:id="@+id/iv_volume"
@@ -184,7 +184,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/rl_boot"
         android:layout_below="@id/tv_title"
-        android:scaleType="fitXY"
-        android:src="@drawable/splash" />
+        android:background="@android:color/black"
+        android:scaleType="fitXY" />
 
 </RelativeLayout>
