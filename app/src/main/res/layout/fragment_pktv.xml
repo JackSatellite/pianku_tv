@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FirstFragment">
+    tools:context=".PKTVFragment">
 
     <ProgressBar
         android:id="@+id/pb_progress"
@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
+        android:minHeight="3dp"
+        android:maxHeight="3dp"
         android:progress="0" />
 
     <WebView

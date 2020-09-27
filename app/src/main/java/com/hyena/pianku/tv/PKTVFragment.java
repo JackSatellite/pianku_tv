@@ -15,17 +15,17 @@ import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.hyena.framework.network.HttpProvider;
 import com.hyena.framework.network.HttpResult;
@@ -40,7 +40,7 @@ import org.cybergarage.upnp.Device;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FirstFragment extends Fragment {
+public class PKTVFragment extends Fragment {
 
     private WebView mWebView;
     private ProgressBar mPbProgress;
@@ -51,6 +51,7 @@ public class FirstFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true);
         }
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
     }
 
     @Override
@@ -59,7 +60,7 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        return inflater.inflate(R.layout.fragment_pktv, container, false);
     }
 
     private String sourceUrl;
@@ -134,18 +135,46 @@ public class FirstFragment extends Fragment {
                 }
                 return super.shouldOverrideUrlLoading(view, request);
             }
-        });
-        mWebView.loadUrl("http://www.pianku.tv");
-        mWebView.setOnKeyListener(new View.OnKeyListener() {
+
+            @Nullable
             @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (keyEvent.getAction() == KeyEvent.ACTION_UP &&
-                        i == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-                    mWebView.goBack();
-                    return true;
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                String url = request.getUrl().toString();
+                if (url.indexOf("pianku") == -1 && url.indexOf("jsdelivr") == -1
+                        && url.indexOf("pstatp") == -1  && url.indexOf("qhimg") == -1) {
+                    Log.v("yangzc", request.getUrl().toString());
+                    return new WebResourceResponse("html", "utf-8", null);
                 }
-                return false;
+                return super.shouldInterceptRequest(view, request);
             }
+
+
+        });
+//        new Thread(() -> {
+//            HttpProvider provider = new HttpProvider();
+//            DataHttpListener listener = new DataHttpListener();
+//            HttpResult result = provider.doGet("https://www.pianku.tv", 30, listener);
+//            if (result.isSuccess()) {
+//                final String html = new String(listener.getData());
+//                Log.v("yangzc", html);
+//                UiThreadHandler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mWebView.loadDataWithBaseURL("https://www.pianku.tv", html, "text/html", "UTF-8", null);
+//                    }
+//                });
+//            } else {
+//                Log.v("yangzc", "fail!!!");
+//            }
+//        }).start();
+        mWebView.loadUrl("http://www.pianku.tv");
+        mWebView.setOnKeyListener((view1, i, keyEvent) -> {
+            if (keyEvent.getAction() == KeyEvent.ACTION_UP &&
+                    i == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+                mWebView.goBack();
+                return true;
+            }
+            return false;
         });
     }
 
