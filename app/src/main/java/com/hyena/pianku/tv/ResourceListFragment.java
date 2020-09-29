@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hyena.framework.clientlog.LogUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -62,6 +63,12 @@ public class ResourceListFragment extends Fragment {
     final int REQUEST_CODE_SELECT_IMAGE = 1;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                Snackbar.make(getView(), "点击返回", 3000).show();
+                break;
+            }
+        }
         if (item.getItemId() == 0 && item.getGroupId() == 0) {
             Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
             openAlbumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "file/*");
