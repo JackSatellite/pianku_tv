@@ -3,7 +3,6 @@ package com.hyena.pianku.tv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hyena.framework.clientlog.LogUtil;
+import com.hyena.framework.utils.FileUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -86,7 +86,7 @@ public class ResourceListFragment extends Fragment {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             try {
                 is = getActivity().getContentResolver().openInputStream(data.getData());
-                FileUtils.copy(is, baos);
+                FileUtils.copyStream(is, baos);
                 LogUtil.v("yangzc", new String(baos.toByteArray()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

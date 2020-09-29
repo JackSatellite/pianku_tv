@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.ControlActivity"
+            android:name=".ControlActivity"
             android:screenOrientation="landscape" />
 
         <service android:name="com.hyena.framework.service.dlna.cybergarage.DLNAService" />
