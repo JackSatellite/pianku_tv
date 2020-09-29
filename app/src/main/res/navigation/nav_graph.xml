@@ -3,26 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/MainFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.hyena.pianku.tv.PKTVFragment"
-        android:label="@string/first_fragment_label"
+        android:id="@+id/MainFragment"
+        android:name="com.hyena.pianku.tv.MainFragment"
+        android:label="首页"
         tools:layout="@layout/fragment_pktv">
 
+        <!--
+        enterAnim: animation of other scene opening
+        exitAnim: animation of current scene closing
+
+        popEnterAnim: animation of other scene opening
+        popExitAnim: animation of current scene closing
+        -->
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.hyena.pianku.tv.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+            android:id="@+id/action_MainFragment_to_PKFragment"
+            app:destination="@id/PKFragment"
+            app:enterAnim="@anim/anim_in"
+            app:exitAnim="@anim/anim_out"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_MainFragment_to_ResourceListFragment"
+            app:destination="@id/ResourceListFragment"
+            app:enterAnim="@anim/anim_in"
+            app:exitAnim="@anim/anim_out" />
     </fragment>
+
+    <fragment
+        android:id="@+id/PKFragment"
+        android:name="com.hyena.pianku.tv.PKTVFragment"
+        android:label="片库"
+        tools:layout="@layout/fragment_resource_list"></fragment>
+
+    <fragment
+        android:id="@+id/ResourceListFragment"
+        android:name="com.hyena.pianku.tv.ResourceListFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_resource_list"></fragment>
 </navigation>
