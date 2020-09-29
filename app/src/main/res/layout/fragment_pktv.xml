@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PKTVFragment">
+    tools:context=".ui.PKTVFragment">
 
     <ProgressBar
         android:id="@+id/pb_progress"
