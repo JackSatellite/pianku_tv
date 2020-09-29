@@ -39,8 +39,8 @@ public class MainFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        String track = Log.getStackTraceString(new RuntimeException("yangzc"));
-        LogUtil.v("DebugUtils", track);
+//        String track = Log.getStackTraceString(new RuntimeException("yangzc"));
+//        LogUtil.v("DebugUtils", track);
     }
 
     @Override
